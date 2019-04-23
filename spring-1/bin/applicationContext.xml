@@ -55,4 +55,68 @@
 		<constructor-arg ref="car"></constructor-arg>
 		<property name="car.maxSpeed" value="230"></property>
 	</bean>
+	
+	
+	
+	
+	
+	
+	<!-- 配置list属性值学习 -->
+	
+	<!-- 通过构造方法来配置bean 可以通过位置和参数类型来匹配构造器-->
+	<bean id="1car" class="com.d.spring.beans.collections.Car">
+		<constructor-arg value="Audi" index="0"></constructor-arg>
+		<constructor-arg value="ShangHai" index="1"></constructor-arg>
+		<constructor-arg value="300000" index="2" type="double"></constructor-arg>
+	</bean>
+	<bean id="1car2" class="com.d.spring.beans.collections.Car">
+		<constructor-arg value="Baoma"></constructor-arg>
+		<!-- 如果字面值包含特殊字符使用<![CDATA[]]>包裹  -->
+		
+		<constructor-arg >
+			<value><![CDATA[<ShangHai^***>]]></value>
+		</constructor-arg>
+		<!-- 
+		<constructor-arg value="240" type="int"></constructor-arg>
+		与下句等同
+		 -->
+		<constructor-arg type="int">
+			<value>240</value>
+		</constructor-arg>
+	</bean>
+	<bean id="person4" class="com.d.spring.beans.collections.Person">
+		<property name="name" value="Mike"></property>
+		<property name="age" value="23"></property>
+		<property name="cars">
+			<list>
+				<ref bean="1car"/>
+				<ref bean="1car2"/>
+				<bean id="1car3" class="com.d.spring.beans.collections.Car">
+					<constructor-arg value="H"></constructor-arg>
+					<constructor-arg value="H1"></constructor-arg>
+					<constructor-arg value="200000" type="double"></constructor-arg>
+					<property name="maxSpeed" value="200"></property>
+				</bean>
+				
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	<!-- 配置Map属性值学习 -->
+	
+	<bean id="person25" class="com.d.spring.beans.collections.Person2">
+		<property name="name" value="Mike"></property>
+		<property name="age" value="23"></property>
+		<property name="cars">
+			<map>
+				<entry key="AA" value-ref="1car"></entry>
+				<entry key="BB" value-ref="1car2"></entry>
+			</map>
+		</property>
+	</bean>
 </beans>
