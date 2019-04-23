@@ -3,6 +3,8 @@ package com.d.spring.beans;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.d.spring.beans.collections.DataSource;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -33,6 +35,8 @@ public class Main {
 	    
 	    Person person22222 = (Person)ctx.getBean("person3");
 	    System.out.println(person22222);
+	    
+	   
 	    
 	}
 
