@@ -39,4 +39,20 @@
 		<!-- 可以使用property的 ref的属性建立bean之间的关系-->
 		<property name="car" ref="car2"></property>
 	</bean>
+	
+	<bean id="person2" class="com.d.spring.beans.Person">
+		<property name="name" value="Jim"></property>
+		<property name="age" value="24"></property>
+		<!-- 可以使用property的 ref的属性建立bean之间的关系-->
+		<property name="car" >
+			<ref bean="car2"/>
+		</property>
+	</bean>
+	
+	<bean id="person3" class="com.d.spring.beans.Person">
+		<constructor-arg value="Jam"></constructor-arg>
+		<constructor-arg value="25"></constructor-arg>
+		<constructor-arg ref="car"></constructor-arg>
+		<property name="car.maxSpeed" value="230"></property>
+	</bean>
 </beans>

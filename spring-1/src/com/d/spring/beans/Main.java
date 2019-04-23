@@ -31,6 +31,9 @@ public class Main {
 	    Person person = (Person)ctx.getBean("person");
 	    System.out.println(person);
 	    
+	    Person person22222 = (Person)ctx.getBean("person3");
+	    System.out.println(person22222);
+	    
 	}
 
 }

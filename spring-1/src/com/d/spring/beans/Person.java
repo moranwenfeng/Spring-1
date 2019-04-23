@@ -34,4 +34,17 @@ public class Person {
 	public String toString() {
 		return "Person [name=" + name + ", age=" + age + ", car=" + car + "]";
 	}
+	
+	public Person() {
+		
+	}
+
+	public Person(String name, int age, Car car) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.car = car;
+	}
+	
+	
 }
