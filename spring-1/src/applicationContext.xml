@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 配置bean 
+		class：bean的全类名，通过反射的方式在IOC中创建Bean，要求B额暗中必须有无参的构造器
+		id：标识容器中的bean.id唯一	
+	-->
+	<bean id="helloWorld" class="com.d.spring.beans.HelloWorld">
+		<property name="name2" value="Spring"></property>
+	</bean>
+	
+	<!-- 通过构造方法来配置bean 可以通过位置和参数类型来匹配构造器-->
+	<bean id="car" class="com.d.spring.beans.Car">
+		<constructor-arg value="Audi" index="0"></constructor-arg>
+		<constructor-arg value="ShangHai" index="1"></constructor-arg>
+		<constructor-arg value="300000" index="2" type="double"></constructor-arg>
+	</bean>
+	<bean id="car2" class="com.d.spring.beans.Car">
+		<constructor-arg value="Baoma"></constructor-arg>
+		<!-- 如果字面值包含特殊字符使用<![CDATA[]]>包裹  -->
+		
+		<constructor-arg >
+			<value><![CDATA[<ShangHai^***>]]></value>
+		</constructor-arg>
+		<!-- 
+		<constructor-arg value="240" type="int"></constructor-arg>
+		与下句等同
+		 -->
+		<constructor-arg type="int">
+			<value>240</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="person" class="com.d.spring.beans.Person">
+		<property name="name" value="Tom"></property>
+		<property name="age" value="24"></property>
+		<!-- 可以使用property的 ref的属性建立bean之间的关系-->
+		<property name="car" ref="car2"></property>
+	</bean>
+</beans>
